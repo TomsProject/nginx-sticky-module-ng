@@ -15,6 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: configure
       run: |
+        ls -a
         wget https://nginx.org/download/nginx-1.23.3.tar.gz
         tar -xzvf nginx-1.23.3.tar.gz
         cd nginx-1.23.3
