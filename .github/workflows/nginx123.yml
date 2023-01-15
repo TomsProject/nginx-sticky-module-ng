@@ -1,0 +1,27 @@
+name: Nginx 1.23
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: configure
+      run: |
+        wget https://nginx.org/download/nginx-1.23.3.tar.gz
+        tar -czvf nginx-1.23.3.tar.gz
+        cd nginx-1.23.3
+    - name: make
+      run: |
+        ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --add-module=../
+        make
+        make install
+    - name: make check
+      run: nginx -V
