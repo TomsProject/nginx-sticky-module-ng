@@ -12,16 +12,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: configure
+    - name: configue module
       run: |
-        ls -a
+        mkdir nginx-sticky-module
+        cd nginx-sticky-module
+    - uses: actions/checkout@v3
+    - name: configure nginx
+      run: |
+        cd ..
         wget https://nginx.org/download/nginx-1.23.3.tar.gz
         tar -xzvf nginx-1.23.3.tar.gz
         cd nginx-1.23.3
     - name: make
       run: |
-        ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --add-module=../
+        ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --add-module=../nginx-sticky-module
         make
         make install
     - name: make check
