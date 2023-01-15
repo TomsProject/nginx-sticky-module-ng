@@ -24,6 +24,6 @@ jobs:
         make install
     - name: make check
       run: |
-        ls nginx
-        sudo ./nginx/bin/nginx
-        sudo ./nginx/bin/nginx -V
+        ls nginx/sbin
+        sudo ./nginx/sbin/nginx
+        sudo ./nginx/sbin/nginx -V
