@@ -25,5 +25,4 @@ jobs:
     - name: make check
       run: |
         ls nginx/sbin
-        sudo ./nginx/sbin/nginx
         sudo ./nginx/sbin/nginx -V
