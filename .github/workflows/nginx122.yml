@@ -18,11 +18,11 @@ jobs:
         tar -xzvf nginx-1.22.1.tar.gz
     - name: make
       run: |
-        cd nginx-1.22.1
-        ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --add-module=../nginx-sticky-module
+        cd nginx-1.23.3
+        ./configure --prefix=../nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --add-module=../nginx-sticky-module
         make
         make install
     - name: make check
       run: |
-        nginx
-        nginx -V
+        ls nginx/sbin
+        sudo ./nginx/sbin/nginx -V
