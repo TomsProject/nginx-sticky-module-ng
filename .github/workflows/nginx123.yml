@@ -19,7 +19,7 @@ jobs:
         cd nginx-1.23.3
     - name: make
       run: |
-        ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --add-module=../
+        ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --add-module=../nginx-sticky-module
         make
         make install
     - name: make check
