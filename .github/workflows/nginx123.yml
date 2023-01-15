@@ -13,14 +13,16 @@ jobs:
         path: nginx-sticky-module
     - name: configure
       run: |
-        ls
+        ls nginx-sticky-module
         wget https://nginx.org/download/nginx-1.23.3.tar.gz
         tar -xzvf nginx-1.23.3.tar.gz
-        cd nginx-1.23.3
     - name: make
       run: |
+        cd nginx-1.23.3
         ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --add-module=../nginx-sticky-module
         make
         make install
     - name: make check
-      run: nginx -V
+      run: |
+        nginx
+        nginx -V
